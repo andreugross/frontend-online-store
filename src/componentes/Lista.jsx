@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Categories from './Categories';
 import ButtonCart from './ButtonCart';
 
 class Lista extends Component {
@@ -9,6 +10,7 @@ class Lista extends Component {
           <ButtonCart />
           Digite algum termo de pesquisa ou escolha uma categoria.
         </h1>
+        <Categories />
       </div>
     );
   }
