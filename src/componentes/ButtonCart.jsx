@@ -11,6 +11,7 @@ export default class ButtonCart extends Component {
               type="button"
               name="button"
               data-testid="shopping-cart-button"
+              value="Carrinho"
             />
           </label>
         </Link>
