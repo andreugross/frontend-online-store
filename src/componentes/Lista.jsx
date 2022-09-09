@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Categories from './Categories';
 
 class Lista extends Component {
   render() {
@@ -7,6 +8,7 @@ class Lista extends Component {
         <h1 data-testid="home-initial-message">
           Digite algum termo de pesquisa ou escolha uma categoria.
         </h1>
+        <Categories />
       </div>
     );
   }
