@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Categories from './Categories';
 import ButtonCart from './ButtonCart';
 import { getProductsFromCategoryAndQuery } from '../services/api';
 import Card from './Card';
@@ -64,6 +65,7 @@ class Lista extends Component {
               />
             )))
         }
+        <Categories />
       </div>
     );
   }
