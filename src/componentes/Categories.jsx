@@ -1,9 +1,14 @@
 import React, { Component } from 'react';
-import { getCategories } from '../services/api';
+import {
+  getCategories,
+  getProductsFromCategoryAndQuery,
+} from '../services/api';
+import Card from './Card';
 
 class Categories extends Component {
   state = {
     categories: [],
+    filterCategories: [],
   };
 
   async componentDidMount() {
@@ -13,32 +18,48 @@ class Categories extends Component {
     });
   }
 
+  handleClick = async ({ target }) => {
+    const { id } = target;
+    const response = await getProductsFromCategoryAndQuery(id);
+    // console.log(id);
+    this.setState({
+      filterCategories: response.results,
+    });
+    // console.log('2', response.results);
+  };
+
   render() {
-    const { categories } = this.state;
+    const { categories, filterCategories } = this.state;
 
     return (
       <div>
-        {
-          categories.map((categoria) => (
-            <div
-              key={ categoria.id }
+        {categories.map((categoria) => (
+          <div
+            key={ categoria.id }
+          >
+            <input
+              /* data-testid="category" */
+              name="name"
+              type="radio"
+              id={ categoria.id }
               data-testid="category"
-            >
-              <input
-                key={ categoria.id }
-                /* data-testid="category" */
-                name="name"
-                type="radio"
-                id={ categoria.id }
+              onClick={ this.handleClick }
+            />
+            <label htmlFor={ categoria.id }>{categoria.name}</label>
+          </div>
+        ))}
+        <div>
+          {filterCategories.map((element) => (
+            <div key={ element.id }>
+              <Card
+                key={ element.id }
+                name={ element.title }
+                price={ element.original_price }
+                thumbnail={ element.thumbnail }
               />
-              <label htmlFor={ categoria.id }>
-                {categoria.name}
-
-              </label>
             </div>
-          ))
-        }
-
+          ))}
+        </div>
       </div>
     );
   }
