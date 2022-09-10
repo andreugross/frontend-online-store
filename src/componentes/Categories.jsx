@@ -38,14 +38,14 @@ class Categories extends Component {
         {categories.map((categoria) => (
           <div
             key={ categoria.id }
-            data-testid="category"
-            onClick={ () => this.handleClick(categoria.id) }
           >
             <input
               /* data-testid="category" */
               name="name"
               type="radio"
               id={ categoria.id }
+              data-testid="category"
+              onClick={ this.handleClick }
             />
             <label htmlFor={ categoria.id }>{categoria.name}</label>
           </div>

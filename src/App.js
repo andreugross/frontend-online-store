@@ -13,9 +13,6 @@ class App extends React.Component {
           <Route exact path="/" component={ Lista } />
           <Route exact path="/categories" component={ Categories } />
           <Route path="/shopping-cart" component={ ShoppingCart } />
-          <div>
-            {api.getCategories().then((categories) => { console.log(categories); })}
-          </div>
         </Switch>
       </BrowserRouter>
     );
