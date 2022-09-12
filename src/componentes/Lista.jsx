@@ -28,7 +28,6 @@ class Lista extends Component {
       data: response.results,
       isNotFound: false,
     });
-    console.log('2', response.results);
   };
 
   render() {
@@ -54,17 +53,19 @@ class Lista extends Component {
         >
           Pesquisar
         </button>
-        {
-          isNotFound ? (<p>Nenhum produto foi encontrado</p>)
-            : (data.map((item) => (
-              <Card
-                key={ item.id }
-                name={ item.title }
-                price={ item.original_price }
-                thumbnail={ item.thumbnail }
-              />
-            )))
-        }
+        {isNotFound ? (
+          <p>Nenhum produto foi encontrado</p>
+        ) : (
+          data.map((item) => (
+            <Card
+              way={ `/description/${item.id}` }
+              key={ item.id }
+              name={ item.title }
+              price={ item.original_price }
+              thumbnail={ item.thumbnail }
+            />
+          ))
+        )}
         <Categories />
       </div>
     );

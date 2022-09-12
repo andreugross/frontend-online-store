@@ -21,11 +21,9 @@ class Categories extends Component {
   handleClick = async ({ target }) => {
     const { id } = target;
     const response = await getProductsFromCategoryAndQuery(id);
-    // console.log(id);
     this.setState({
       filterCategories: response.results,
     });
-    // console.log('2', response.results);
   };
 
   render() {
@@ -52,6 +50,7 @@ class Categories extends Component {
           {filterCategories.map((element) => (
             <div key={ element.id }>
               <Card
+                way={ `/description/${element.id}` }
                 key={ element.id }
                 name={ element.title }
                 price={ element.original_price }
