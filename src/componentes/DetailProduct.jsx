@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import ButtonCart from './ButtonCart';
-import Card from './Card';
+import CardDetail from './CardDetail';
 import { getProductsFromId } from '../services/api';
 
 export default class DetailProduct extends Component {
@@ -26,10 +26,12 @@ export default class DetailProduct extends Component {
     const { productResult } = this.state;
     return (
       <div>
-        <Card
+        <CardDetail
           name={ productResult.title }
           price={ productResult.price }
           thumbnail={ productResult.thumbnail }
+          id={ productResult.id }
+          click={ [productResult] }
         />
         <ButtonCart />
       </div>
