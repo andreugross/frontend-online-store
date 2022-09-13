@@ -63,6 +63,7 @@ class Lista extends Component {
               name={ item.title }
               price={ item.original_price }
               thumbnail={ item.thumbnail }
+              id={ item.id }
             />
           ))
         )}
