@@ -12,20 +12,22 @@ class ShoppingCart extends Component {
     const array = [];
     const arrayDois = [];
     const get = getProducts();
-    console.log('log', get);
+    /* console.log('log', get); */
     this.setState({
       cartInfo: get,
     });
     if (get !== null) {
       const peter = get.map((age) => age.id);
-      peter.forEach((remedio, index) => {
+      peter.forEach((remedio) => {
         if (!array.includes(remedio)) {
           array.push(remedio);
         }
-        const val = get.find((sad) => sad.id === array[index]);
-        if (val) arrayDois.push(val);
       });
     }
+    array.forEach((e) => {
+      const val = get.find((sad) => sad.id === e);
+      if (val) arrayDois.push(val);
+    });
     this.setState({
       newRender: arrayDois,
     });
