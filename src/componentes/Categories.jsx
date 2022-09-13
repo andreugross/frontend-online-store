@@ -55,6 +55,8 @@ class Categories extends Component {
                 name={ element.title }
                 price={ element.original_price }
                 thumbnail={ element.thumbnail }
+                id={ element.id }
+                click={ filterCategories }
               />
             </div>
           ))}
