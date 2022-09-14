@@ -9,10 +9,9 @@ class Card extends React.Component {
     click: [],
   }; */
 
-  handleCLick = async (event, func) => {
+  handleCLick = (event, func) => {
     const { target } = event;
     const { name } = target;
-    /*  const getApi = await getProductsFromId(name); */
     const act = func.find((element) => element.id === name);
     const prod = getProducts();
     if (prod === null) {

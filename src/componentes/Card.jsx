@@ -5,14 +5,33 @@ import { saveProducts, getProducts } from '../services/storage';
 /* import { getProductsFromId } from '../services/api'; */
 
 class Card extends React.Component {
-  /* state = {
-    click: [],
-  }; */
+  // state = {
+  //   prod: [],
+  // };
 
-  handleCLick = async (event, func) => {
+  // componentDidMount() {
+  //   const prod = getProducts() || [];
+  //   this.setState({
+  //     prod,
+  //   });
+  // }
+
+  // handleCLick = (event, func) => {
+  //   const { target } = event;
+  //   const { name } = target;
+  //   // const { prod } = this.state;
+  //   const act = func.find((element) => element.id === name);
+  //   this.setState((prevState) => ({
+  //     prod: [...prevState.prod, act],
+  //   }), () => {
+  //     const { prod } = this.state;
+  //     saveProducts(prod);
+  //   });
+  // };
+
+  handleCLick = (event, func) => {
     const { target } = event;
     const { name } = target;
-    /*  const getApi = await getProductsFromId(name); */
     const act = func.find((element) => element.id === name);
     const prod = getProducts();
     if (prod === null) {
