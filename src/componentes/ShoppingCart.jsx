@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 /* import Card from './Card'; */
-import { getProducts } from '../services/storage';
+import { getProducts, saveProducts } from '../services/storage';
+import NewCount from './NewCount';
 
 class ShoppingCart extends Component {
   state = {
     cartInfo: [],
     newRender: [],
+    // quantity
   };
 
   componentDidMount() {
@@ -33,6 +35,16 @@ class ShoppingCart extends Component {
     });
   }
 
+  removeProducts = (id) => {
+    const { cartInfo } = this.state;
+    const lacRevolt = cartInfo.filter((dan) => dan.id !== id);
+    console.log(lacRevolt);
+    saveProducts(lacRevolt);
+    this.setState({
+      newRender: lacRevolt,
+    });
+  };
+
   render() {
     const { cartInfo, newRender } = this.state;
     return (
@@ -40,30 +52,13 @@ class ShoppingCart extends Component {
         {cartInfo !== null ? (
 
           newRender.map((info) => (
-            <div key={ info.id }>
-              <p data-testid="shopping-cart-product-quantity">
-                {
-                  cartInfo.reduce((acc, val) => {
-                    let cont = acc;
-                    if (val.id === info.id) {
-                      cont += 1;
-                    } return cont;
-                  }, 0)
-                }
-              </p>
-              <div>
-                <p data-testid="shopping-cart-product-name">
-                  { info.title }
-                </p>
-                <p>
-                  { info.price }
-                </p>
-                <img
-                  src={ info.thumbnail }
-                  alt={ info.title }
-                />
-              </div>
-            </div>
+            <NewCount
+              key={ info.id }
+              cartInfo={ cartInfo }
+              newRender={ newRender }
+              info={ info }
+              removeProducts={ this.removeProducts }
+            />
           ))
         ) : (
 
