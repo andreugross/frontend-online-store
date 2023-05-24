@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import ButtonCart from './ButtonCart';
 import CardDetail from './CardDetail';
 import { getProductsFromId } from '../services/api';
+import Rating from './Rating';
 
 export default class DetailProduct extends Component {
   state = {
@@ -34,6 +35,7 @@ export default class DetailProduct extends Component {
           click={ [productResult] }
         />
         <ButtonCart />
+        <Rating />
       </div>
     );
   }
